@@ -39,7 +39,6 @@ typedef struct _xselman_t xselman_t;
 typedef struct
 {
 	int i;
-	char name[20];
 	GtkClipboard *cb;
 	char *txt;
 	xselman_t *xselman;
@@ -119,7 +118,6 @@ int main(int argc, char *argv[])
 
 	for (i = 0; i < XSEL_NUM; i++) {
 		xselman.xsel[i].i = i;
-		snprintf(xselman.xsel[i].name, sizeof(xselman.xsel[i].name), "%s", xsel_info[i].name);
 		xselman.xsel[i].cb = gtk_clipboard_get(xsel_info[i].cba);
 		xselman.xsel[i].txt = NULL;
 		xselman.xsel[i].xselman = &xselman;
