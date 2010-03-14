@@ -1,0 +1,42 @@
+xselman
+
+
+
+= NAME =
+
+xselman - X selection management.
+
+
+
+= SYNOPSIS =
+
+**xselman**
+
+
+
+= DESCRIPTION =
+
+**xselman** is a program that manages X selections.
+
+For now, that means that it synchronizes the primary and secondary selections.
+
+
+
+= OPTIONS =
+
+**-h** Help.
+
+
+
+= AUTHOR =
+
+Written by Leandro Penz
+
+
+
+= SEE ALSO =
+
+**xclipboard**(1), **xclip**(1), **X**(7)
+
+
+
