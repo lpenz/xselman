@@ -22,11 +22,13 @@
 
 
 //! Information about the selections to sync.
-const struct {
+const struct
+{
 	const char *name;
 	GdkAtom cba;
 }
-xsel_info[] = {
+xsel_info[] =
+{
 	{ "primary"   , GDK_SELECTION_PRIMARY   },
 	{ "clipboard" , GDK_SELECTION_CLIPBOARD },
 	/* No reason to sync secondary: */
@@ -91,7 +93,7 @@ void xsel_check_txt(GtkClipboard *clipboard, const gchar *text, gpointer data)
 
 
 /**
- * \brief Timeout handler - requests selection text for xsel_check_txt.
+ * \brief  Timeout handler - requests selection text for xsel_check_txt.
  */
 int xsel_check(gpointer data)
 {
@@ -105,7 +107,7 @@ int xsel_check(gpointer data)
 
 
 /**
- * \brief Initialization.
+ * \brief  Initialization.
  */
 int main(int argc, char *argv[])
 {
@@ -116,7 +118,8 @@ int main(int argc, char *argv[])
 
 	xselman.w = gtk_invisible_new();
 
-	for (i = 0; i < XSEL_NUM; i++) {
+	for (i = 0; i < XSEL_NUM; i++)
+	{
 		xselman.xsel[i].i = i;
 		xselman.xsel[i].cb = gtk_clipboard_get(xsel_info[i].cba);
 		xselman.xsel[i].txt = NULL;
