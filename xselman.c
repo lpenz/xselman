@@ -1,3 +1,17 @@
+/****************************************************************************/
+/**
+ * \file
+ * \brief  xselman synchronizes the different X selections.
+ *
+ * X windows has 2 relevant selections: the "clipboard" and the "primary"
+ * selections.
+ *
+ * The behaviour of these selections is not 100% consistent: the pasting
+ * behaviour from most applications (SHIFT+INS for "primary",
+ * middle-mouse-button for "clipboard") is different from the behaviour of the
+ * terminal emulators (always "primary").
+ */
+/****************************************************************************/
 
 #include <gtk/gtk.h>
 #include <string.h>
@@ -7,6 +21,7 @@
 #define XSELMAN_INTERVAL 1500
 
 
+//! Information about the selections to sync.
 const struct {
 	const char *name;
 	GdkAtom cba;
@@ -20,6 +35,7 @@ xsel_info[] = {
 
 typedef struct _xselman_t xselman_t;
 
+//! Selection runtime data.
 typedef struct
 {
 	int i;
@@ -30,6 +46,7 @@ typedef struct
 }
 xsel_t;
 
+//! Top runtime data.
 struct _xselman_t
 {
 	GtkWidget *w;
@@ -38,27 +55,34 @@ struct _xselman_t
 
 /****************************************************************************/
 
+/**
+ * \brief  Checks if the text of a selection changed and synchronizes the
+ * others if it did.
+ */
 void xsel_check_txt(GtkClipboard *clipboard, const gchar *text, gpointer data)
 {
 	xsel_t *xsel = data;
 	int i;
 
+	/* Initialization. */
 	if (! xsel->txt) {
 		if (text)
 			xsel->txt = strdup(text);
 		return;
 	}
 
+	/* No change, quit. */
 	if (strcmp(text, xsel->txt) == 0)
 		return;
 
-	printf("xsel %-10s: [%s] -> [%s]\n", xsel->name, xsel->txt, text);
+	/* Syncing selections and storing last-seen-text. */
 	for (i = 0; i < XSEL_NUM; i++) {
 		xsel_t *xseli = &xsel->xselman->xsel[i];
 
 		free(xseli->txt);
 		xseli->txt = strdup(text);
 
+		/* No need to set the clipboard that changed. */
 		if (i == xsel->i)
 			continue;
 
@@ -67,6 +91,9 @@ void xsel_check_txt(GtkClipboard *clipboard, const gchar *text, gpointer data)
 }
 
 
+/**
+ * \brief Timeout handler - requests selection text for xsel_check_txt.
+ */
 int xsel_check(gpointer data)
 {
 	xsel_t *xsel = data;
@@ -78,6 +105,9 @@ int xsel_check(gpointer data)
 }
 
 
+/**
+ * \brief Initialization.
+ */
 int main(int argc, char *argv[])
 {
 	xselman_t xselman;
