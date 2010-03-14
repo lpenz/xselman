@@ -13,8 +13,9 @@ const struct {
 }
 xsel_info[] = {
 	{ "primary"   , GDK_SELECTION_PRIMARY   },
-	{ "secondary" , GDK_SELECTION_SECONDARY },
 	{ "clipboard" , GDK_SELECTION_CLIPBOARD },
+	/* No reason to sync secondary: */
+	/* { "secondary" , GDK_SELECTION_SECONDARY }, */
 };
 
 typedef struct _xselman_t xselman_t;
