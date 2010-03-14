@@ -18,7 +18,8 @@ xselman - X selection management.
 
 **xselman** is a program that manages X selections.
 
-For now, that means that it synchronizes the primary and secondary selections.
+For now, that means that it synchronizes the primary selection with the
+clipboard (and vice-versa).
 
 
 
