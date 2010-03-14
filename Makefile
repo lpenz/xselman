@@ -1,32 +1,35 @@
 
 PREFIX=/usr/local
-PLUGINDIR = $(PREFIX)/lib/gkrellm2/plugins
+BINDIR=$(PREFIX)/bin
+MANDIR=$(PREFIX)/share/man
 
 GTK2_INCLUDE = `pkg-config gtk+-2.0 --cflags`
 GTK2_LIB = `pkg-config gtk+-2.0 --libs`
 
-CPPFLAGS = -Wall -Werror
-CFLAGS = -O2 -fPIC $(GTK2_INCLUDE)
+CFLAGS = -Wall -Werror -O2 $(GTK2_INCLUDE)
 LDLIBS = $(GTK2_LIB)
 
-all: xselman
+
+all: xselman xselman.1
 
 .PHONY: all install clean
 
-xselman: xselman.c
+xselman: xselman.o
 
+xselman.o: xselman.c
 
-#install: gkrellexec.so
-#	mkdir -p $(PLUGINDIR)
-#	install -c -s -m 644 gkrellexec.so $(PLUGINDIR)
+xselman.1: manual.t2t
+	txt2tags -t man -i $^ -o $@
+
+README.textile: manual.t2t
+	txt2tags -t html -H -i $^ -o $@
+	sed -i -e 's@<B>@**@g' -e 's@</B>@**@g' $@
 
 clean:
-	rm -f *.o *.so
+	rm -f xselman.o xselman
 
-#README.textile: gkrellexec.t2t
-#	txt2tags -t html -H -i $^ -o $@
-#	sed -i -e 's@<B>@**@g' -e 's@</B>@**@g' $@
-#
-#README.html: gkrellexec.t2t
-#	txt2tags -t html -i $< -o $@
+install: xselman
+	install -d $(BINDIR) $(MANDIR)/man1
+	install xselman $(BINDIR)/xselman
+	install xselman.1 $(MANDIR)/man1/xselman.1
 
