@@ -1,0 +1,27 @@
+<H1>NAME</H1>
+<P>
+xselman - X selection management.
+</P>
+<H1>SYNOPSIS</H1>
+<P>
+**xselman**
+</P>
+<H1>DESCRIPTION</H1>
+<P>
+**xselman** is a program that manages X selections.
+</P>
+<P>
+For now, that means that it synchronizes the primary and secondary selections.
+</P>
+<H1>OPTIONS</H1>
+<P>
+**-h** Help.
+</P>
+<H1>AUTHOR</H1>
+<P>
+Written by Leandro Penz
+</P>
+<H1>SEE ALSO</H1>
+<P>
+**xclipboard**(1), **xclip**(1), **X**(7)
+</P>
