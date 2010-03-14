@@ -1,7 +1,9 @@
 /****************************************************************************/
 /**
  * \file
- * \brief  xselman synchronizes the different X selections.
+ * \brief  xselman manages the X selections.
+ *
+ * For now, xselman has a single feature: X selection synchronization.
  *
  * X windows has 2 relevant selections: the "clipboard" and the "primary"
  * selections.
@@ -16,6 +18,9 @@
 #include <gtk/gtk.h>
 #include <string.h>
 #include <stdlib.h>
+
+#define PROGRAM_NAME "xselman"
+#define PROGRAM_VERSION "0.1"
 
 #define XSEL_NUM ((sizeof xsel_info)/(sizeof(*xsel_info)))
 #define XSELMAN_INTERVAL 1500
