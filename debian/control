@@ -1,0 +1,18 @@
+Source: xselman
+Section: utils
+Priority: extra
+Maintainer: Leandro Lisboa Penz <llpenz@gmail.com>
+Build-Depends: debhelper (>= 7.0.50), make (>= 3.81-5), libc6-dev (>= 2.7-18), gcc (>= 4:4.3.2-2), coreutils (>= 6.10-6), txt2tags (>= 1), libgtk2.0-dev (>= 2)
+Standards-Version: 3.8.4
+Vcs-Browser: http://github.com/lpenz/xselman
+Vcs-Git: git://github.com/lpenz/xselman.git
+Homepage: http://github.com/lpenz/xselman
+
+Package: xselman
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: X selection management
+ xselman is a program that manages X selections.
+ For now, that means that it synchronizes the primary selection with the
+ clipboard (and vice-versa).
+
