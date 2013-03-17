@@ -1,3 +1,9 @@
+xselman (0.1-2) unstable; urgency=low
+
+  * Signing with new key.
+
+ -- Leandro Lisboa Penz <lpenz@lpenz.org>  Sun, 17 Mar 2013 10:11:32 -0300
+
 xselman (0.1-1) unstable; urgency=low
 
   * Initial release.
