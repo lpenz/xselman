@@ -45,7 +45,7 @@ typedef struct _xselman_t xselman_t;
 //! Selection runtime data.
 typedef struct
 {
-	int i;
+	size_t i;
 	GtkClipboard *cb;
 	char *txt;
 	xselman_t *xselman;
@@ -67,8 +67,9 @@ struct _xselman_t
  */
 void xsel_check_txt(GtkClipboard *clipboard, const gchar *text, gpointer data)
 {
+	(void)clipboard;
 	xsel_t *xsel = data;
-	int i;
+        size_t i;
 
 	/* Initialization. */
 	if (! xsel->txt) {
@@ -117,7 +118,7 @@ int xsel_check(gpointer data)
 int main(int argc, char *argv[])
 {
 	xselman_t xselman;
-	int i;
+        size_t i;
 
 	gtk_init(&argc, &argv);
 
