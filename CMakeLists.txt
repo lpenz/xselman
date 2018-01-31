@@ -20,14 +20,11 @@ target_link_libraries (xselman "${GTK2_LIBRARIES}")
 
 # Manual:
 add_custom_command(
-	OUTPUT xselman.1
-	DEPENDS manual.t2t
-	COMMAND txt2tags -q -t man -i ${CMAKE_CURRENT_SOURCE_DIR}/manual.t2t -o ${CMAKE_CURRENT_BINARY_DIR}/xselman.1
-	)
-add_custom_command(
 	OUTPUT xselman.1.gz
 	DEPENDS xselman.1
-	COMMAND gzip -9k ${CMAKE_CURRENT_BINARY_DIR}/xselman.1
+	COMMAND gzip -9kc
+		${CMAKE_CURRENT_SOURCE_DIR}/xselman.1
+		> ${CMAKE_CURRENT_BINARY_DIR}/xselman.1.gz
 	)
 add_custom_target(manual ALL DEPENDS xselman.1.gz)
 
