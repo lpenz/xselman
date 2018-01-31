@@ -1,5 +1,5 @@
 ---
-addons: { apt: { packages: [ libgtk2.0-dev, txt2tags ] } }
+addons: { apt: { packages: [ libgtk2.0-dev ] } }
 language: c
 script:
   - mkdir _build _install
@@ -10,16 +10,21 @@ script:
   - make install
 jobs:
   include:
-    - env: [ ACTION=build ]
-      compiler: gcc
-    - env: [ ACTION=build ]
-      compiler: clang
-    - env: [ ACTION=omnilint ]
+    - env: [ omnilint ]
       language: generic
       addons: {}
       install: docker pull lpenz/omnilint
       script: docker run --rm -v "$PWD:$PWD" -e "RWD=$PWD" -e "MY_UID=$UID" lpenz/omnilint
-    - env: [ ACTION=clang-check+tidy ]
+    - env: [ format ]
+      language: generic
+      addons: {}
+      install: docker pull debian:stretch
+      script:
+        - docker run -d --name debian -v "$PWD:$PWD" debian:stretch sleep 9999999999
+        - docker exec -t debian /bin/bash -c "apt-get update && apt-get install -y --no-install-recommends clang-format"
+        - docker exec -t debian find "$PWD" \( -name '*.[ch]' -o -name '*.cc' \) -exec clang-format -i {} +
+        - git diff --exit-code
+    - env: [ clang-check+tidy ]
       language: generic
       addons: {}
       install: docker pull debian:stretch
@@ -32,12 +37,7 @@ jobs:
             R=$?
             docker exec -t debian find "$PWD" \( -name '*.[ch]' -o -name '*.cc' \) -exec clang-tidy -p $PWD {} +
             exit $(($?+R))
-    - env: [ ACTION=format ]
-      language: generic
-      addons: {}
-      install: docker pull debian:stretch
-      script:
-        - docker run -d --name debian -v "$PWD:$PWD" debian:stretch sleep 9999999999
-        - docker exec -t debian /bin/bash -c "apt-get update && apt-get install -y --no-install-recommends clang-format"
-        - docker exec -t debian find "$PWD" \( -name '*.[ch]' -o -name '*.cc' \) -exec clang-format -i {} +
-        - git diff --exit-code
+    - env: [ build ]
+      compiler: gcc
+    - env: [ build ]
+      compiler: clang
