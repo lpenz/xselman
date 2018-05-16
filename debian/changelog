@@ -1,3 +1,10 @@
+xselman (0.2-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+  * Modernize debian packaging.
+
+ -- Leandro Lisboa Penz <lpenz@lpenz.org>  Wed, 16 May 2018 21:01:58 +0100
+
 xselman (0.1-2) unstable; urgency=low
 
   * Signing with new key.
