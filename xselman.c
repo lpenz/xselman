@@ -1,4 +1,7 @@
-/****************************************************************************/
+// Copyright (C) 2010 Leandro Lisboa Penz <lpenz@lpenz.org>
+// This file is subject to the terms and conditions defined in
+// file 'LICENSE.txt', which is part of this source code package.
+
 /**
  * \file
  * \brief  xselman manages the X selections.
@@ -13,7 +16,6 @@
  * middle-mouse-button for "clipboard") is different from the behaviour of the
  * terminal emulators (always "primary").
  */
-/****************************************************************************/
 
 #include <gtk/gtk.h>
 #include <stdlib.h>
