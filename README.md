@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/lpenz/xselman.png?branch=master)](https://travis-ci.org/lpenz/xselman) 
+[![packagecloud](https://img.shields.io/badge/deb-packagecloud.io-844fec.svg)](https://packagecloud.io/app/lpenz/lpenz/search?q=xselman)
 
 xselman
 =======
