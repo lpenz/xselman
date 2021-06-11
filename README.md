@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/lpenz/xselman.png?branch=master)](https://travis-ci.org/lpenz/xselman) 
+[![CI](https://github.com/lpenz/xselman/actions/workflows/ci.yml/badge.svg)](https://github.com/lpenz/xselman/actions/workflows/ci.yml)
 [![packagecloud](https://img.shields.io/badge/deb-packagecloud.io-844fec.svg)](https://packagecloud.io/app/lpenz/lpenz/search?q=xselman)
 
 xselman
