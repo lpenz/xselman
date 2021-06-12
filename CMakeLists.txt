@@ -10,18 +10,19 @@ include(GNUInstallDirs)
 
 if(CMAKE_COMPILER_IS_GNUCXX)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -W")
-	set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -W")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 find_package (PkgConfig REQUIRED)
 pkg_check_modules (GTK2 REQUIRED gtk+-2.0)
-
-# Main executable:
 include_directories ("${GTK2_INCLUDE_DIRS}")
+
+# Main targets
+
 add_executable (xselman xselman.c)
 target_link_libraries (xselman "${GTK2_LIBRARIES}")
 
-# Manual:
+# Manual
+
 add_custom_command(
 	OUTPUT xselman.1.gz
 	DEPENDS xselman.1
@@ -31,12 +32,18 @@ add_custom_command(
 	)
 add_custom_target(manual ALL DEPENDS xselman.1.gz)
 
-# Install:
+# Install
+
 install (
     TARGETS xselman
-    DESTINATION bin
+    DESTINATION bin/
     )
 install (
     FILES ${CMAKE_CURRENT_BINARY_DIR}/xselman.1.gz
     DESTINATION ${CMAKE_INSTALL_MANDIR}/man1/
     )
+install (
+    FILES README.md LICENSE AUTHORS
+    DESTINATION ${CMAKE_INSTALL_DOCDIR}/
+    )
+
