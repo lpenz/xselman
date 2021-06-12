@@ -1,5 +1,5 @@
 [![CI](https://github.com/lpenz/xselman/actions/workflows/ci.yml/badge.svg)](https://github.com/lpenz/xselman/actions/workflows/ci.yml)
-[![packagecloud](https://img.shields.io/badge/deb-packagecloud.io-844fec.svg)](https://packagecloud.io/app/lpenz/lpenz/search?q=xselman)
+[![packagecloud](https://img.shields.io/badge/deb-packagecloud.io-844fec.svg)](https://packagecloud.io/app/lpenz/debian/search?q=xselman)
 
 xselman
 =======
