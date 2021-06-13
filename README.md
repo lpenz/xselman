@@ -4,22 +4,20 @@
 xselman
 =======
 
-# About
-
 xselman is a program that manages X selections.
 
 It prints selection updates, and synchronizes the primary selection with the
 clipboard.
 
 
-# Usage
+## Usage
 
 ~~~[.sh]
 xselman
 xselman -h
 ~~~
 
-## Options
+### Options
 
 **-h** Help.
 
