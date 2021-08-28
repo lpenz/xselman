@@ -9,7 +9,7 @@ project (xselman)
 include(GNUInstallDirs)
 
 if(CMAKE_COMPILER_IS_GNUCXX)
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -W")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -W -DGTK_DISABLE_DEPRECATED")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 find_package (PkgConfig REQUIRED)
