@@ -22,7 +22,7 @@
 #include <string.h>
 
 #define PROGRAM_NAME "xselman"
-#define PROGRAM_VERSION "0.2"
+#define PROGRAM_VERSION "0.2.1"
 
 #define XSEL_NUM ((sizeof xsel_info) / (sizeof(*xsel_info)))
 #define XSELMAN_INTERVAL 1500
